@@ -86,6 +86,12 @@ describe Museum do
         expect(@museum.patrons_by_exhibit_interest.values.all?{|value| value.class == Array}).to eq(true)
       end
       it 'returns the correct array of Patrons for each key' do
+        expected = {
+          @dead_sea_scrolls => [@patron_1, @patron_3, @patron_2],
+          @gems_and_minerals => [@patron_1],
+          @imax => []
+        }
+
         expect(@museum.patrons_by_exhibit_interest).to eq({@dead_sea_scrolls => [@patron_1, @patron_3, @patron_2], @gems_and_minerals => [@patron_1], @imax => [] })
       end
     end
